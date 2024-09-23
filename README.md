@@ -1,1 +1,73 @@
 # something.github.io
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GitHub Proxy</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      background-color: #f4f4f4;
+      margin: 0;
+    }
+    #proxy {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      width: 300px;
+    }
+    #url {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+    }
+    button {
+      padding: 10px;
+      width: 100%;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    iframe {
+      margin-top: 20px;
+      width: 100%;
+      height: 500px;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="proxy">
+    <h2>Enter URL</h2>
+    <input type="text" id="url" placeholder="https://example.com" required>
+    <button id="accessBtn">Access Website</button>
+  </div>
+  <iframe id="proxyFrame"></iframe>
+
+  <script>
+    document.getElementById('accessBtn').addEventListener('click', function() {
+      var url = document.getElementById('url').value;
+      if (url.startsWith('http://') || url.startsWith('https://')) {
+        document.getElementById('proxyFrame').src = 'https://cors-anywhere.herokuapp.com/' + url;
+      } else {
+        alert('Please enter a valid URL with http:// or https://');
+      }
+    });
+  </script>
+
+</body>
+</html>
